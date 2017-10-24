@@ -485,17 +485,19 @@ class Optimizer(object):
         """
 
         lineups_dict = {
-            'players': [],
             'pts': [],
-            'cost': []
+            'cost': [],
         }
+        for pos in self.pos_requirements:
+            lineups_dict[pos] = []
 
         for lineup in population:
-            lineups_dict['players'].append(
-                list(lineup[self.name_col].str.replace(',', '-'))
-            )
             lineups_dict['pts'].append(sum(lineup[self.projection_col]))
             lineups_dict['cost'].append(sum(lineup[self.salary_col]))
+            for pos in self.pos_requirements:
+                player = lineup[self.name_col][lineup['pos_filled'] == pos]
+                player = player.values[0].replace(',', '-')
+                lineups_dict[pos].append(player)
 
         return_df = pd.DataFrame(lineups_dict)
         return_df['pts'] = return_df['pts'].astype(int)

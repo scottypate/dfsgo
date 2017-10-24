@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name="dfsgo",
-    version="0.1.1",
+    version="0.1.2",
     packages=find_packages(),
     install_requires=[
         'numpy>=1.13.3', 'pandas>=0.20.3'],
