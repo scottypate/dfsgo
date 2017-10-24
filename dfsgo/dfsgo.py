@@ -499,6 +499,7 @@ class Optimizer(object):
 
         return_df = pd.DataFrame(lineups_dict)
         return_df['pts'] = return_df['pts'].astype(int)
+        return_df.drop_duplicates(inplace=True)
         return_df.sort_values('pts', ascending=False, inplace=True)
 
         try:
