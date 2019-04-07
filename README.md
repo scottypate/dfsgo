@@ -71,3 +71,8 @@ lineups_df = optimizer.evolve(
     n_solutions=1000
 )
 ```
+
+
+# License
+
+See [LICENSE](LICENSE.md) file for rights and limitations (GNU GPL v3).
